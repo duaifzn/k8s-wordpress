@@ -8,7 +8,7 @@ services:
       - ./data/mysql:/var/lib/mysql
     restart: always
     ports: 
-     - '3313:3306'
+     - '3310:3306'
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: wordpress
@@ -21,7 +21,7 @@ services:
     image: wordpress:latest
     container_name: wordpress
     ports:
-      - "80:80"
+      - "3000:80"
     restart: always
     depends_on:
       - wordpress-mysql
