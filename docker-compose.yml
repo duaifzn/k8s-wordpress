@@ -1,9 +1,9 @@
 version: '3'
 
 services:
-  wordpress-mysql:
+  wordpress1-mysql:
     image: mysql:5.7
-    container_name: wordpress-mysql 
+    container_name: wordpress1-mysql 
     volumes:
       - ./data/mysql:/var/lib/mysql
     restart: always
@@ -15,30 +15,102 @@ services:
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: root
     networks:
-      - wordpress
+      - wordpress1
 
-  wordpress:
+  wordpress1:
     image: wordpress:latest
-    container_name: wordpress
+    container_name: wordpress1
     ports:
       - "3000:80"
     restart: always
     depends_on:
-      - wordpress-mysql
+      - wordpress1-mysql
     volumes:
-      - ./data/wordpress/wp-content:/var/www/html/wp-content
-      - ./data/wordpress/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+      - ./data/wordpress1/wp-content:/var/www/html/wp-content
+      - ./data/wordpress1/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
     environment:
-      WORDPRESS_DB_HOST: wordpress-mysql:3306
+      WORDPRESS_DB_HOST: wordpress1-mysql:3306
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: root
       WORDPRESS_DB_NAME: wordpress
     networks:
-      - wordpress
+      - wordpress1
 
+  wordpress2-mysql:
+    image: mysql:5.7
+    container_name: wordpress2-mysql 
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    restart: always
+    ports: 
+     - '3311:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: root
+    networks:
+      - wordpress2
+
+  wordpress2:
+    image: wordpress:latest
+    container_name: wordpress2
+    ports:
+      - "3001:80"
+    restart: always
+    depends_on:
+      - wordpress2-mysql
+    volumes:
+      - ./data/wordpress2/wp-content:/var/www/html/wp-content
+      - ./data/wordpress2/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+    environment:
+      WORDPRESS_DB_HOST: wordpress2-mysql:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: root
+      WORDPRESS_DB_NAME: wordpress
+    networks:
+      - wordpress2
+
+  wordpress3-mysql:
+    image: mysql:5.7
+    container_name: wordpress3-mysql 
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    restart: always
+    ports: 
+     - '3312:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: root
+    networks:
+      - wordpress3
+
+  wordpress3:
+    image: wordpress:latest
+    container_name: wordpress3
+    ports:
+      - "3002:80"
+    restart: always
+    depends_on:
+      - wordpress3-mysql
+    volumes:
+      - ./data/wordpress3/wp-content:/var/www/html/wp-content
+      - ./data/wordpress3/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+    environment:
+      WORDPRESS_DB_HOST: wordpress3-mysql:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: root
+      WORDPRESS_DB_NAME: wordpress
+    networks:
+      - wordpress3
 networks:
-  wordpress:
+  wordpress1:
     driver: bridge
-
+  wordpress2:
+    driver: bridge
+  wordpress3:
+    driver: bridge
   
 
