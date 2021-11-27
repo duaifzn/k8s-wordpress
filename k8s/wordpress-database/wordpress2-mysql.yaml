@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: wordpress2-mysql-pod
+  namespace: wordpress2
+  labels:
+    app: wordpress2-mysql-pod
+spec:
+  containers:
+  - name: wordpress2-mysql
+    image: mysql:5.7
+    ports:
+    - containerPort: 3306
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: wordpress2-mysql-service
+  namespace: wordpress2
+spec:
+  selector:
+    app: wordpress2-mysql-pod
+  ports:
+    - protocol: TCP
+      port: 3311
+      targetPort: 3306
