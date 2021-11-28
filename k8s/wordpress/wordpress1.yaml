@@ -12,7 +12,7 @@ spec:
     - containerPort: 80
     env:
     - name: WORDPRESS_DB_HOST
-      value: wordpress1-mysql-service
+      value: wordpress1-mysql-service:3310
     - name: WORDPRESS_DB_USER
       value: wordpress
     - name: WORDPRESS_DB_PASSWORD
