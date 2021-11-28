@@ -12,13 +12,13 @@ spec:
     - containerPort: 3306
     env:
     - name: MYSQL_ROOT_PASSWORD
-      value: "root"
+      value: root
     - name: MYSQL_DATABASE
-      value: "wordpress"
+      value: wordpress
     - name: MYSQL_USER
-      value: "wordpress"
+      value: wordpress
     - name: MYSQL_PASSWORD
-      value: "root"
+      value: root
 ---
 apiVersion: v1
 kind: Service
