@@ -8,6 +8,7 @@ spec:
   containers:
   - name: wordpress1
     image: wordpress:latest
+    command: ["/bin/sh", "-c", "ln -s /opt/bitnami/wordpress /opt/bitnami/wordpress/wordpress1"]
     ports:
     - containerPort: 80
     env:
