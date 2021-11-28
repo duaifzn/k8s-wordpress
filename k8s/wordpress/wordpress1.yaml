@@ -33,3 +33,20 @@ spec:
     - protocol: TCP
       port: 3000
       targetPort: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: server-ingress
+  namespace: wordpress1
+spec:
+  rules:
+  - http:
+      paths:
+      - pathType: Prefix
+        path: "/wordpress1"
+        backend:
+          service:
+            name: wordpress1-service
+            port:
+              number: 3000
