@@ -8,7 +8,6 @@ spec:
   containers:
   - name: wordpress1
     image: wordpress:latest
-    command: ["/bin/sh", "-c", "ln -s /var/www/html /var/www/html/wordpress1"]
     ports:
     - containerPort: 80
     env:
@@ -20,6 +19,11 @@ spec:
       value: root
     - name: WORDPRESS_DB_NAME
       value: wordpress
+    - name: WORDPRESS_CONFIG_EXTRA
+      value: |
+        define('WP_SITEURL', 'http://172.104.100.43/wordpress1/');
+        define('WP_HOME', 'http://172.104.100.43/wordpress1/');
+        define('WP_CONTENT_URL', 'http://172.104.100.43/wordpress1/wp-content/');
 ---
 apiVersion: v1
 kind: Service
