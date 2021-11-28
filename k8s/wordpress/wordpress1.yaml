@@ -27,9 +27,7 @@ metadata:
 spec:
   selector:
     app: wordpress1-pod
-  type: NodePort
   ports:
     - protocol: TCP
       port: 3000
       targetPort: 80
-      nodePort: 30001
