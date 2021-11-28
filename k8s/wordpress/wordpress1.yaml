@@ -23,7 +23,6 @@ spec:
       value: |
         define('WP_SITEURL', 'http://172.104.100.43/wordpress1/');
         define('WP_HOME', 'http://172.104.100.43/wordpress1/');
-        define('WP_CONTENT_URL', 'http://172.104.100.43/wordpress1/wp-content/');
 ---
 apiVersion: v1
 kind: Service
