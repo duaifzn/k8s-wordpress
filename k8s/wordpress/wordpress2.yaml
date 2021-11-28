@@ -19,6 +19,11 @@ spec:
       value: root
     - name: WORDPRESS_DB_NAME
       value: wordpress
+    - name: WORDPRESS_CONFIG_EXTRA
+      value: |
+        define('WP_SITEURL', 'http://172.104.100.43/wordpress2/');
+        define('WP_HOME', 'http://172.104.100.43/wordpress2/');
+        define('WP_CONTENT_URL', 'http://172.104.100.43/wordpress2/wp-content/');
 ---
 apiVersion: v1
 kind: Service
