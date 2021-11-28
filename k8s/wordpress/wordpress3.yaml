@@ -11,7 +11,15 @@ spec:
     image: wordpress:latest
     ports:
     - containerPort: 80
-
+    env:
+    - name: WORDPRESS_DB_HOST
+      value: wordpress3-mysql-service
+    - name: WORDPRESS_DB_USER
+      value: wordpress
+    - name: WORDPRESS_DB_PASSWORD
+      value: root
+    - name: WORDPRESS_DB_NAME
+      value: wordpress
 ---
 apiVersion: v1
 kind: Service
