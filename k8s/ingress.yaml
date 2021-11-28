@@ -13,17 +13,17 @@ spec:
             name: wordpress1-service
             port:
               number: 3000
-      # - pathType: Prefix
-      #   path: "/wordpress2"
-      #   backend:
-      #     service:
-      #       name: wordpress2-service
-      #       port:
-      #         number: 3001
-      # - pathType: Prefix
-      #   path: "/wordpress3"
-      #   backend:
-      #     service:
-      #       name: wordpress3-service
-      #       port:
-      #         number: 3002
+      - pathType: Prefix
+        path: "/wordpress2"
+        backend:
+          service:
+            name: wordpress2-service
+            port:
+              number: 3001
+      - pathType: Prefix
+        path: "/wordpress3"
+        backend:
+          service:
+            name: wordpress3-service
+            port:
+              number: 3002
