@@ -11,7 +11,6 @@ spec:
         backend:
           service:
             name: wordpress1-service
-            namespace: wordpress1
             port:
               number: 3000
       - pathType: Prefix
@@ -19,7 +18,6 @@ spec:
         backend:
           service:
             name: wordpress2-service
-            namespace: wordpress2
             port:
               number: 3001
       - pathType: Prefix
@@ -27,6 +25,5 @@ spec:
         backend:
           service:
             name: wordpress3-service
-            namespace: wordpress3
             port:
               number: 3002
