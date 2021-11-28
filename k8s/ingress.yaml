@@ -7,7 +7,7 @@ spec:
   - http:
       paths:
       - pathType: Prefix
-        path: "/"
+        path: "/wordpress1"
         backend:
           service:
             name: wordpress1-service
