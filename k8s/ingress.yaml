@@ -12,18 +12,18 @@ spec:
           service:
             name: wordpress1-service
             port:
-              number: 3000
+              number: 80
       - pathType: Prefix
         path: "/wordpress2"
         backend:
           service:
             name: wordpress2-service
             port:
-              number: 3001
+              number: 80
       - pathType: Prefix
         path: "/wordpress3"
         backend:
           service:
             name: wordpress3-service
             port:
-              number: 3002
+              number: 80
