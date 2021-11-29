@@ -12,9 +12,13 @@ spec:
   - http:
       paths:
       - pathType: Prefix
-        path: "/argocd"
+        path: /
         backend:
           service:
             name: argocd-server
             port:
               number: 443
+  tls:
+  - hosts:
+    - 172.104.100.43
+    secretName: argocd-secret
