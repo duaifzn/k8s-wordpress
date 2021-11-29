@@ -27,10 +27,3 @@ spec:
             name: wordpress3-service
             port:
               number: 3002
-      - pathType: Prefix
-        path: "/argocd"
-        backend:
-          service:
-            name: argocd-server
-            port: 
-              number: 80
