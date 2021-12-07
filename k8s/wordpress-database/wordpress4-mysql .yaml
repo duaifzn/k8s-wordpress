@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: wordpress4-mysql-pod
+  labels:
+    app: wordpress4-mysql-pod
+spec:
+  containers:
+  - name: wordpress4-mysql
+    image: mysql:5.7
+    ports:
+    - containerPort: 3306
+    env:
+    - name: MYSQL_ROOT_PASSWORD
+      value: root
+    - name: MYSQL_DATABASE
+      value: wordpress
+    - name: MYSQL_USER
+      value: wordpress
+    - name: MYSQL_PASSWORD
+      value: root
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: wordpress4-mysql-service
+spec:
+  selector:
+    app: wordpress4-mysql-pod
+  ports:
+    - protocol: TCP
+      port: 3313
+      targetPort: 3306
