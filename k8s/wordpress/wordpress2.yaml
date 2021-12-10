@@ -1,4 +1,16 @@
 apiVersion: v1
+kind: ConfigMap
+metadata: 
+  name: wordpress2-configmap
+data:
+  uploads.ini: |
+    file_uploads = On
+    memory_limit = 8G
+    upload_max_filesize = 8G
+    post_max_size = 8G
+    max_execution_time = 600
+---
+apiVersion: v1
 kind: Pod
 metadata:
   name: wordpress2-pod
@@ -24,6 +36,13 @@ spec:
         define('WP_SITEURL', 'http://172.104.100.43/wordpress2/');
         define('WP_HOME', 'http://172.104.100.43/wordpress2/');
         define('WP_CONTENT_URL', 'http://172.104.100.43/wordpress2/wp-content/');
+    volumeMounts:
+      - name: uploads
+        mountPath: /usr/local/etc/php/conf.d/
+  volumes:
+    - name: uploads
+      configMap:
+        name: wordpress2-configmap
 ---
 apiVersion: v1
 kind: Service
