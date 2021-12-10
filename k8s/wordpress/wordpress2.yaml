@@ -38,7 +38,7 @@ spec:
         define('WP_CONTENT_URL', 'http://172.104.100.43/wordpress2/wp-content/');
     volumeMounts:
     - name: uploads
-      mountPath: /usr/local/etc/php/conf.d/
+      mountPath: /usr/local/etc/php/conf.d/uploads.ini
   volumes:
     - name: uploads
       configMap:
