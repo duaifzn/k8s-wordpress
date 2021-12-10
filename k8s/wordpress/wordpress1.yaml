@@ -39,6 +39,7 @@ spec:
     volumeMounts:
     - name: uploads
       mountPath: /usr/local/etc/php/conf.d/uploads.ini
+      subPath: uploads.ini
   volumes:
     - name: uploads
       configMap:
