@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata: 
-  name: wordpress3-configmap
+  name: wordpress4-configmap
 data:
   uploads.ini: |
     file_uploads = On
